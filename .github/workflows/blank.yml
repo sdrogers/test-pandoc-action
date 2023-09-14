@@ -22,6 +22,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - uses: actions/checkout@v3
+      
       - run: |
           echo "foo" > input.txt
           mkdir output
@@ -30,7 +32,7 @@ jobs:
           args: >-  # allows you to break string into multiple lines
             --standalone
             --output=output/index.html
-            input.txt
+            README.md
       - uses: actions/upload-artifact@v3
         with:
           name: output
