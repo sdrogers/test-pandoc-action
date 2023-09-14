@@ -25,14 +25,13 @@ jobs:
       - uses: actions/checkout@v3
       
       - run: |
-          echo "foo" > input.txt
           mkdir output
       - uses: docker://pandoc/core:2.9
         with:
           args: >-  # allows you to break string into multiple lines
             --standalone
             --output=output/index.txt
-            --to=dokowiki
+            --to=dokuwiki
             README.md
       - uses: actions/upload-artifact@v3
         with:
