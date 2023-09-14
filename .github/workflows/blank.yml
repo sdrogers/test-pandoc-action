@@ -22,12 +22,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - run: echo "foo" > input.txt  # create an example file
+      - run: |
+          echo "foo" > input.txt
+          mkdir output
       - uses: docker://pandoc/core:2.9
         with:
           args: >-  # allows you to break string into multiple lines
             --standalone
-            --output=index.html
+            --output=output/index.html
             input.txt
       - uses: actions/upload-artifact@v3
         with:
